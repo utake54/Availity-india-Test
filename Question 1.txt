@@ -1,0 +1,47 @@
+
+public class FillingWater {
+
+	public static void main(String[] args) {
+		 
+		//for test case 1
+		int[] height  = { 0,1,0,2,1,0,1,3,2,1,2,1 };
+		int length =	height.length;
+	    	int trappedWater=    waterTrapped(height,length);
+		System.out.println("Water in given height will trapped: " +trappedWater);
+
+		
+		//for test case 2
+		int[]height2 = {4,2,0,3,2,5};
+		int length2=height2.length;
+		int trappedWater2=    waterTrapped(height2,length2);
+		System.out.println("Water in given height2 will trapped: " +trappedWater2);
+		
+	}
+	
+	public static int waterTrapped(int[] height, int length)
+    {
+  
+      
+        int amountofWater = 0;
+  
+        for (int i = 0; i < length; i++) {
+  
+         
+            int left = height[i];
+            for (int j = 0; j < i; j++) {
+                left = Math.max(left, height[j]);
+            }
+  
+           
+            int right = height[i];
+            for (int j = i + 1; j < length; j++) {
+                right = Math.max(right, height[j]);
+            }
+  
+            
+            amountofWater += Math.min(left, right) - height[i];
+        }
+        return amountofWater;
+    }
+
+}

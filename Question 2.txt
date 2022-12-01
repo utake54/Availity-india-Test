@@ -1,0 +1,68 @@
+class ElementIndex {
+	
+	
+	public static void main(String args[])
+    {
+		
+		//test case 1
+        int arr[] = {8, 9, 10, 1, 2, 3, 4, 5, 6, 7};
+        int n = arr.length;
+        int key = 3;
+        int i = search(arr, 0, n - 1, key);
+        if (i != -1)
+            System.out.println("key found at index Index: " + i);
+        else
+            System.out.println("Key not found");
+        
+        
+        
+        //test case 2
+        int arr1[] = {8, 9, 10, 1, 2, 3, 4, 5, 6, 7};
+        int length1 = arr1.length;
+        int key1 = 30;
+        int j = search(arr1, 0, length1 - 1, key1);
+        if (i != -1)
+        	
+            System.out.println("Key not found");
+        else
+            System.out.println("key found at index Index: " + j);
+        
+        
+        //test case 3
+        int arr2[] = {50, 60, 70, 30, 40};
+        int length2 = arr2.length;
+        int key2 = 30;
+        int k = search(arr2, 0, length2 - 1, key2);
+        if (i != -1)
+            System.out.println("key found at index Index: " + k);
+        else
+            System.out.println("Key not found");
+    }
+	
+	
+	
+    static int search(int arr[], int l, int h, int key)
+    {
+        if (l > h)
+            return -1;
+ 
+        int mid = (l + h) / 2;
+        if (arr[mid] == key)
+            return mid;
+ 
+       
+        if (arr[l] <= arr[mid]) {
+         
+            if (key >= arr[l] && key <= arr[mid])
+                return search(arr, l, mid - 1, key);
+           
+            return search(arr, mid + 1, h, key);
+        }
+ 
+       
+        if (key >= arr[mid] && key <= arr[h])
+            return search(arr, mid + 1, h, key);
+ 
+        return search(arr, l, mid - 1, key);
+    }   
+}
